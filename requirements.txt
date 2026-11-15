@@ -1,0 +1,10 @@
+torch>=2.4
+torchvision>=0.20
+transformers>=4.57
+accelerate>=0.34
+datasets>=2.20
+huggingface_hub>=0.26
+safetensors>=0.4
+pillow>=10
+tqdm>=4.66
+timm==0.9.16
