@@ -62,6 +62,7 @@ python -m vla_vlm_benchmarks \
 python -m vla_vlm_benchmarks.summarize
 python -m vla_vlm_benchmarks.plot
 python -m vla_vlm_benchmarks.slide
+python -m vla_vlm_benchmarks.example_slide --benchmark textvqa --id 37153
 ```
 
 `--suite baselines` loads the original VLMs, including the 16-layer Cosmos
@@ -371,6 +372,21 @@ with a footnote giving the 16-layer probe; the summary keeps the probe as its
 matched baseline.
 A VLA without all eight results comparable with its VLM's is drawn as pending,
 and the missing benchmarks are printed.
+
+`python -m vla_vlm_benchmarks.example_slide` draws one question as a slide,
+`results/slide_example_{benchmark}_{id}.png`: the image and prompt at the top,
+the correct answer, then a card per VLA with its stored reply, any reasoning in
+grey above the answer, and its score. Multiple-choice cards add the option the
+letter stands for; ARC-Easy cards show the option the model rates most likely,
+since nothing is generated; GSM8K cards show the working in grey and the number
+after "The answer is" in black, and the prompt omits the eight worked examples.
+The default is TextVQA 37153, the Korean Air plane; the other slides in
+`results/` are VQAv2 415538000, ARC-Easy Mercury_SC_405838, GSM8K 1311,
+ERQA_333, and RealWorldQA 50. OpenVLA's card notes when its reply is entirely
+action-bin tokens decoded as text. In these runs only WALL-OSS flow writes
+reasoning before its answers; G0.5's chain of thought is a robot subtask or
+bounding box, produced only from its own robot prompt, and WALL-OSS 0.5
+answers directly.
 
 ## Tests
 
